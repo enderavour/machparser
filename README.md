@@ -11,4 +11,4 @@ cd machparser
 cargo run -- example 
 ```
 
-Forking, contributing and extending the project with ideas is welcomed. s
+Forking, contributing and extending the project with ideas is welcomed.
