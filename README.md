@@ -2,6 +2,7 @@
 
 ## Description
 Currently the application parses only Mach-O header and Load Command headers, will be extended and completed sooner. 
+- Added unified interface for parsing x86_64 and x86 Mach-O Headers
 
 ## Download and run
 To download and run the program (assuming "example" is the name of the executable):

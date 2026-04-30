@@ -1,7 +1,7 @@
 use std::io::Error;
 use std::{fs::File, io::Read};
 
-use crate::macho::{LoadCommand, MachOHeader};
+use crate::macho::{LoadCommand, MachOHdr, MachOHeader64};
 
 pub fn read_entire_file(fh: &mut File) -> Result<Vec<u8>, Error>
 {
@@ -16,15 +16,15 @@ pub fn read_entire_file(fh: &mut File) -> Result<Vec<u8>, Error>
     Ok(buffer)
 }
 
-pub fn parse_mach_header(fdata: &[u8]) -> MachOHeader
+pub fn parse_mach_header(fdata: &[u8]) -> MachOHeader64
 {
     let mut ptr = 0;
     let mut buf = [0u8; 4];
 
-    let mut hdr = MachOHeader::default();
+    let mut hdr = MachOHeader64::default();
 
-    // Magick number
-    hdr.magick[..].copy_from_slice(&fdata[ptr..ptr + 4]);
+    // Magic number
+    hdr.magic[..].copy_from_slice(&fdata[ptr..ptr + 4]);
     ptr += 4;
 
     // CPU Type
