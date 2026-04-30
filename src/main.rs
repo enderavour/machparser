@@ -17,7 +17,6 @@ fn main() -> Result<(), Box<dyn Error>>
     #[cfg(target_arch = "x86_64")]
     {
         use crate::macho::MachOHeader64;
-        // Safety Kaboom💥💥💥
         MACHO_HDR.set(MachOHeader64::from_raw(&f_contents));
         println!("Executable type: {}", MACHO_HDR.get().unwrap().get_file_type());
         let load_comms = parser::read_load_commands(&f_contents, MACHO_HDR.get().unwrap().get_load_commands_number());
